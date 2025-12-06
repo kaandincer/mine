@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent, ReactNode } from 'react'
+import { supabase } from '@/lib/supabase'
 
 interface ModalProps {
   isOpen: boolean
@@ -58,16 +59,46 @@ export function SignUpModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
     company: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    console.log('Sign up data:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      onClose()
-      setFormData({ name: '', email: '', company: '' })
-    }, 2000)
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const { data, error: supabaseError } = await supabase
+        .from('signups')
+        .insert([
+          {
+            name: formData.name || null,
+            email: formData.email,
+            company: formData.company || null,
+          }
+        ])
+        .select()
+
+      if (supabaseError) {
+        console.error('Error saving signup:', supabaseError)
+        setError('Failed to submit. Please try again.')
+        setIsLoading(false)
+        return
+      }
+
+      console.log('Sign up saved:', data)
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        onClose()
+        setFormData({ name: '', email: '', company: '' })
+        setError(null)
+      }, 2000)
+    } catch (err) {
+      console.error('Unexpected error:', err)
+      setError('An unexpected error occurred. Please try again.')
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -110,6 +141,11 @@ export function SignUpModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
+        {error && (
+          <div className="text-sm text-red-600 font-medium">
+            {error}
+          </div>
+        )}
         {submitted ? (
           <div className="text-sm text-green-600 font-medium">
             ✓ Thank you! We'll be in touch soon.
@@ -117,9 +153,10 @@ export function SignUpModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
         ) : (
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors font-medium"
+            disabled={isLoading}
+            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit
+            {isLoading ? 'Submitting...' : 'Submit'}
           </button>
         )}
       </form>
