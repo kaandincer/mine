@@ -68,7 +68,7 @@ export function SignUpModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
     setError(null)
 
     try {
-      const { data, error: supabaseError } = await supabase
+      const { error: supabaseError } = await supabase
         .from('signups')
         .insert([
           {
@@ -77,16 +77,18 @@ export function SignUpModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
             company: formData.company || null,
           }
         ])
-        .select()
 
       if (supabaseError) {
         console.error('Error saving signup:', supabaseError)
-        setError('Failed to submit. Please try again.')
+        // Show more specific error message for debugging
+        const errorMessage = supabaseError.message || 'Failed to submit. Please try again.'
+        setError(`Error: ${errorMessage}`)
         setIsLoading(false)
         return
       }
 
-      console.log('Sign up saved:', data)
+      console.log('Sign up saved successfully')
+      setIsLoading(false)
       setSubmitted(true)
       setTimeout(() => {
         setSubmitted(false)
