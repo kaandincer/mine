@@ -174,16 +174,43 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    console.log('Contact data:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      onClose()
-      setFormData({ name: '', email: '', company: '', message: '' })
-    }, 2000)
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      console.log('Contact form submitted:', data)
+      setIsLoading(false)
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        onClose()
+        setFormData({ name: '', email: '', company: '', message: '' })
+        setError(null)
+      }, 2000)
+    } catch (err) {
+      console.error('Error submitting contact form:', err)
+      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.')
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -241,6 +268,11 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
+        {error && (
+          <div className="text-sm text-red-600 font-medium">
+            {error}
+          </div>
+        )}
         {submitted ? (
           <div className="text-sm text-green-600 font-medium">
             ✓ Thank you! We'll get back to you soon.
@@ -248,9 +280,10 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         ) : (
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors font-medium"
+            disabled={isLoading}
+            className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit
+            {isLoading ? 'Sending...' : 'Submit'}
           </button>
         )}
       </form>
