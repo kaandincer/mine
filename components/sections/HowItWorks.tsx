@@ -1,10 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-
-interface HowItWorksProps {
-  onTryFreeClick: () => void
-}
+import Link from 'next/link'
 
 const steps = [
   {
@@ -49,7 +46,7 @@ const steps = [
   },
 ]
 
-export default function HowItWorks({ onTryFreeClick }: HowItWorksProps) {
+export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0)
 
   return (
@@ -110,12 +107,12 @@ export default function HowItWorks({ onTryFreeClick }: HowItWorksProps) {
 
         {/* CTA */}
         <div className="text-center">
-          <button
-            onClick={onTryFreeClick}
-            className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
+          <Link
+            href="/signup"
+            className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
           >
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -14,22 +14,6 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import Footer from '@/components/Footer'
 
 export default function Home() {
-  const [tryFreeModalOpen, setTryFreeModalOpen] = useState(false)
-  const [bookDemoModalOpen, setBookDemoModalOpen] = useState(false)
-
-  const handleSignInClick = () => {
-    // TODO: Connect to authentication system
-    console.log('Sign in clicked')
-  }
-
-  const handleTryFreeClick = () => {
-    setTryFreeModalOpen(true)
-  }
-
-  const handleBookDemoClick = () => {
-    setBookDemoModalOpen(true)
-  }
-
   const handleHowItWorksClick = () => {
     const element = document.getElementById('how-it-works')
     if (element) {
@@ -39,35 +23,20 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header onSignInClick={handleSignInClick} />
+      <Header />
       
       <main>
-        <Hero
-          onTryFreeClick={handleTryFreeClick}
-          onBookDemoClick={handleBookDemoClick}
-        />
+        <Hero />
         <ProblemSolution onHowItWorksClick={handleHowItWorksClick} />
-        <HowItWorks onTryFreeClick={handleTryFreeClick} />
+        <HowItWorks />
         <Differentiation />
         <Features />
-        <Vision onTryFreeClick={handleTryFreeClick} />
+        <Vision />
         <FAQ />
-        <FinalCTA
-          onTryFreeClick={handleTryFreeClick}
-          onBookDemoClick={handleBookDemoClick}
-        />
+        <FinalCTA />
       </main>
 
-      <Footer onBookDemoClick={handleBookDemoClick} />
-
-      <SignUpModal
-        isOpen={tryFreeModalOpen}
-        onClose={() => setTryFreeModalOpen(false)}
-      />
-      <ContactModal
-        isOpen={bookDemoModalOpen}
-        onClose={() => setBookDemoModalOpen(false)}
-      />
+      <Footer />
     </div>
   )
 }

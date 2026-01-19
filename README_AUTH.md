@@ -43,16 +43,16 @@ In your Supabase Dashboard → Authentication → URL Configuration:
 
 **Site URL:**
 - Local: `http://localhost:3000`
-- Production: `https://your-domain.com`
+- Production: `https://www.trymine.ai`
 
 **Redirect URLs:**
 Add these redirect URLs:
 - `http://localhost:3000/api/auth/callback`
-- `https://your-domain.com/api/auth/callback`
+- `https://www.trymine.ai/api/auth/callback`
 - `http://localhost:3000/reset-password`
-- `https://your-domain.com/reset-password`
+- `https://www.trymine.ai/reset-password`
 - `http://localhost:3000/verify-email`
-- `https://your-domain.com/verify-email`
+- `https://www.trymine.ai/verify-email`
 
 ### 3. Enable Email Verification
 

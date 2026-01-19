@@ -1,8 +1,4 @@
-interface FooterProps {
-  onBookDemoClick: () => void
-}
-
-export default function Footer({ onBookDemoClick }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -18,12 +14,14 @@ export default function Footer({ onBookDemoClick }: FooterProps) {
             <span>© {currentYear} MINE.</span>
           </div>
           <div className="flex gap-6 items-center">
-            <button
-              onClick={onBookDemoClick}
+            <a
+              href="https://calendly.com/trymine-info/demo"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
             >
               Book a Demo
-            </button>
+            </a>
             <a
               href="#"
               className="text-sm text-slate-600 hover:text-slate-900 transition-colors"

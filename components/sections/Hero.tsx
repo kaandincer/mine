@@ -1,9 +1,6 @@
-interface HeroProps {
-  onTryFreeClick: () => void
-  onBookDemoClick: () => void
-}
+import Link from 'next/link'
 
-export default function Hero({ onTryFreeClick, onBookDemoClick }: HeroProps) {
+export default function Hero() {
   return (
     <section className="py-20 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,18 +17,20 @@ export default function Hero({ onTryFreeClick, onBookDemoClick }: HeroProps) {
               MINE turns data migration from a labor-driven service into an autonomous, reusable product. Cut time and cost by 50–70% while reducing go-live risk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-4">
-              <button
-                onClick={onTryFreeClick}
-                className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
+              <Link
+                href="/signup"
+                className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium text-center"
               >
                 Get started for free
-              </button>
-              <button
-                onClick={onBookDemoClick}
-                className="px-6 py-3 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors font-medium"
+              </Link>
+              <a
+                href="https://calendly.com/trymine-info/demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors font-medium text-center"
               >
                 Book a Demo
-              </button>
+              </a>
             </div>
           </div>
 

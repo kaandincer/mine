@@ -1,8 +1,6 @@
-interface VisionProps {
-  onTryFreeClick: () => void
-}
+import Link from 'next/link'
 
-export default function Vision({ onTryFreeClick }: VisionProps) {
+export default function Vision() {
   return (
     <section className="py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,12 +32,12 @@ export default function Vision({ onTryFreeClick }: VisionProps) {
         </div>
 
         <div className="text-center">
-          <button
-            onClick={onTryFreeClick}
-            className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
+          <Link
+            href="/signup"
+            className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
           >
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </section>
