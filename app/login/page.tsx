@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
+
+export const dynamic = 'force-dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
@@ -9,7 +11,7 @@ import FormField from '@/components/auth/FormField'
 import { Button } from '@/components/ui/button'
 import { Alert } from '@/components/ui/alert'
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
@@ -106,5 +108,21 @@ export default function LoginPage() {
         </Button>
       </form>
     </AuthCard>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <AuthCard title="Sign in to MINE" subtitle="Loading...">
+          <div className="text-center">
+            <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent mx-auto"></div>
+          </div>
+        </AuthCard>
+      }
+    >
+      <LoginContent />
+    </Suspense>
   )
 }

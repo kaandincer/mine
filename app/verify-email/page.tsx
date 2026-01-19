@@ -1,18 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
+
+export const dynamic = 'force-dynamic'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import AuthCard from '@/components/auth/AuthCard'
 import { Button } from '@/components/ui/button'
 import { Alert } from '@/components/ui/alert'
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const verified = searchParams.get('verified') === 'true'
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<{ email?: string } | null>(null)
 
   useEffect(() => {
     const checkUser = async () => {
@@ -101,5 +103,21 @@ export default function VerifyEmailPage() {
         </Button>
       </div>
     </AuthCard>
+  )
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense
+      fallback={
+        <AuthCard title="Verifying Email" subtitle="Please wait...">
+          <div className="text-center">
+            <div className="mb-4 h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent mx-auto"></div>
+          </div>
+        </AuthCard>
+      }
+    >
+      <VerifyEmailContent />
+    </Suspense>
   )
 }

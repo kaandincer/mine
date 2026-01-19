@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import AuthCard from '@/components/auth/AuthCard'
 import FormField from '@/components/auth/FormField'
@@ -8,10 +9,16 @@ import { Button } from '@/components/ui/button'
 import { Alert } from '@/components/ui/alert'
 
 export default function ForgotPasswordPage() {
+  const router = useRouter()
+  const [origin, setOrigin] = useState('')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    setOrigin(window.location.origin)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -21,7 +28,7 @@ export default function ForgotPasswordPage() {
     try {
       const supabase = createClient()
       const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/api/auth/callback?type=recovery`,
+        redirectTo: `${origin || process.env.NEXT_PUBLIC_SITE_URL || 'https://trymine.com'}/api/auth/callback?type=recovery`,
       })
 
       if (resetError) {
@@ -52,7 +59,7 @@ export default function ForgotPasswordPage() {
           variant="primary"
           size="lg"
           className="w-full"
-          onClick={() => (window.location.href = '/login')}
+          onClick={() => router.push('/login')}
         >
           Back to Sign In
         </Button>
