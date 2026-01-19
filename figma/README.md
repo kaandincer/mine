@@ -1,16 +1,11 @@
-# Figma Make – Source of Truth
 
-This folder contains code exported directly from Figma Make.
+  # MINE Project Setup UI
 
-Rules for implementation:
-- Files in this folder represent the canonical UI/UX.
-- Do NOT redesign, simplify, or optimize visuals.
-- Do NOT change spacing, colors, typography, or layout.
-- Use these files as reference, not inspiration.
-- If there is a conflict between app code and these files, THESE FILES WIN.
+  This is a code bundle for MINE Project Setup UI. The original project is available at https://www.figma.com/design/7aTE9L5Z9C8s9rX9mhQ9gD/MINE-Project-Setup-UI.
 
-Structure:
-- /tokens → design tokens (colors, spacing, typography)
-- /components → canonical UI components
-- /screens → full page layouts
-- /interactions → UX behavior and transitions
+  ## Running the code
+
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
+  
