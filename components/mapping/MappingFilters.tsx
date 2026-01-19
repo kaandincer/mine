@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils/cn'
 
-type FilterType = 'needs_review' | 'high_confidence' | 'unmapped' | 'all'
+export type FilterType = 'needs_review' | 'high_confidence' | 'unmapped' | 'all'
 
 interface MappingFiltersProps {
   activeFilter: FilterType
