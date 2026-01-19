@@ -1,8 +1,8 @@
 interface VisionProps {
-  onSignUpClick: () => void
+  onTryFreeClick: () => void
 }
 
-export default function Vision({ onSignUpClick }: VisionProps) {
+export default function Vision({ onTryFreeClick }: VisionProps) {
   return (
     <section className="py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,10 +35,10 @@ export default function Vision({ onSignUpClick }: VisionProps) {
 
         <div className="text-center">
           <button
-            onClick={onSignUpClick}
+            onClick={onTryFreeClick}
             className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
           >
-            Sign up for launch
+            Get Started
           </button>
         </div>
       </div>

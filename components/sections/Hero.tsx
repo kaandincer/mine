@@ -1,9 +1,9 @@
 interface HeroProps {
-  onSignUpClick: () => void
-  onContactClick: () => void
+  onTryFreeClick: () => void
+  onBookDemoClick: () => void
 }
 
-export default function Hero({ onSignUpClick, onContactClick }: HeroProps) {
+export default function Hero({ onTryFreeClick, onBookDemoClick }: HeroProps) {
   return (
     <section className="py-20 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +13,7 @@ export default function Hero({ onSignUpClick, onContactClick }: HeroProps) {
             <div className="text-sm font-semibold text-indigo-600 uppercase tracking-wide mb-4">
               AI-Native Data Migration Automation
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               The autonomous engine for your data migration.
             </h1>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
@@ -21,21 +21,18 @@ export default function Hero({ onSignUpClick, onContactClick }: HeroProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-4">
               <button
-                onClick={onSignUpClick}
+                onClick={onTryFreeClick}
                 className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
               >
-                Sign up for launch
+                Get started for free
               </button>
               <button
-                onClick={onContactClick}
+                onClick={onBookDemoClick}
                 className="px-6 py-3 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors font-medium"
               >
-                Contact us
+                Book a Demo
               </button>
             </div>
-            <p className="text-xs text-slate-500">
-              Product is in active development. Join the waitlist for early access.
-            </p>
           </div>
 
           {/* Right: Visual */}

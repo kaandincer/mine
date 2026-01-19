@@ -1,9 +1,9 @@
 interface FinalCTAProps {
-  onSignUpClick: () => void
-  onContactClick: () => void
+  onTryFreeClick: () => void
+  onBookDemoClick: () => void
 }
 
-export default function FinalCTA({ onSignUpClick, onContactClick }: FinalCTAProps) {
+export default function FinalCTA({ onTryFreeClick, onBookDemoClick }: FinalCTAProps) {
   return (
     <section className="py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -15,16 +15,16 @@ export default function FinalCTA({ onSignUpClick, onContactClick }: FinalCTAProp
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={onSignUpClick}
+            onClick={onTryFreeClick}
             className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
           >
-            Sign up for launch
+            Get started for free
           </button>
           <button
-            onClick={onContactClick}
+            onClick={onBookDemoClick}
             className="px-6 py-3 border border-slate-300 text-slate-700 rounded-md hover:bg-white transition-colors font-medium"
           >
-            Contact us
+            Book a Demo
           </button>
         </div>
       </div>

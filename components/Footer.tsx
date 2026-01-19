@@ -1,8 +1,8 @@
 interface FooterProps {
-  onContactClick: () => void
+  onBookDemoClick: () => void
 }
 
-export default function Footer({ onContactClick }: FooterProps) {
+export default function Footer({ onBookDemoClick }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -19,10 +19,10 @@ export default function Footer({ onContactClick }: FooterProps) {
           </div>
           <div className="flex gap-6 items-center">
             <button
-              onClick={onContactClick}
+              onClick={onBookDemoClick}
               className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
             >
-              Contact
+              Book a Demo
             </button>
             <a
               href="#"

@@ -14,15 +14,20 @@ import FinalCTA from '@/components/sections/FinalCTA'
 import Footer from '@/components/Footer'
 
 export default function Home() {
-  const [signUpModalOpen, setSignUpModalOpen] = useState(false)
-  const [contactModalOpen, setContactModalOpen] = useState(false)
+  const [tryFreeModalOpen, setTryFreeModalOpen] = useState(false)
+  const [bookDemoModalOpen, setBookDemoModalOpen] = useState(false)
 
-  const handleSignUpClick = () => {
-    setSignUpModalOpen(true)
+  const handleSignInClick = () => {
+    // TODO: Connect to authentication system
+    console.log('Sign in clicked')
   }
 
-  const handleContactClick = () => {
-    setContactModalOpen(true)
+  const handleTryFreeClick = () => {
+    setTryFreeModalOpen(true)
+  }
+
+  const handleBookDemoClick = () => {
+    setBookDemoModalOpen(true)
   }
 
   const handleHowItWorksClick = () => {
@@ -34,37 +39,34 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header
-        onSignUpClick={handleSignUpClick}
-        onContactClick={handleContactClick}
-      />
+      <Header onSignInClick={handleSignInClick} />
       
       <main>
         <Hero
-          onSignUpClick={handleSignUpClick}
-          onContactClick={handleContactClick}
+          onTryFreeClick={handleTryFreeClick}
+          onBookDemoClick={handleBookDemoClick}
         />
         <ProblemSolution onHowItWorksClick={handleHowItWorksClick} />
-        <HowItWorks onSignUpClick={handleSignUpClick} />
+        <HowItWorks onTryFreeClick={handleTryFreeClick} />
         <Differentiation />
         <Features />
-        <Vision onSignUpClick={handleSignUpClick} />
+        <Vision onTryFreeClick={handleTryFreeClick} />
         <FAQ />
         <FinalCTA
-          onSignUpClick={handleSignUpClick}
-          onContactClick={handleContactClick}
+          onTryFreeClick={handleTryFreeClick}
+          onBookDemoClick={handleBookDemoClick}
         />
       </main>
 
-      <Footer onContactClick={handleContactClick} />
+      <Footer onBookDemoClick={handleBookDemoClick} />
 
       <SignUpModal
-        isOpen={signUpModalOpen}
-        onClose={() => setSignUpModalOpen(false)}
+        isOpen={tryFreeModalOpen}
+        onClose={() => setTryFreeModalOpen(false)}
       />
       <ContactModal
-        isOpen={contactModalOpen}
-        onClose={() => setContactModalOpen(false)}
+        isOpen={bookDemoModalOpen}
+        onClose={() => setBookDemoModalOpen(false)}
       />
     </div>
   )

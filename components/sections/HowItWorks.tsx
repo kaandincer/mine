@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 interface HowItWorksProps {
-  onSignUpClick: () => void
+  onTryFreeClick: () => void
 }
 
 const steps = [
@@ -49,7 +49,7 @@ const steps = [
   },
 ]
 
-export default function HowItWorks({ onSignUpClick }: HowItWorksProps) {
+export default function HowItWorks({ onTryFreeClick }: HowItWorksProps) {
   const [activeStep, setActiveStep] = useState(0)
 
   return (
@@ -66,12 +66,12 @@ export default function HowItWorks({ onSignUpClick }: HowItWorksProps) {
 
         {/* Tabs */}
         <div className="mb-8">
-          <div className="flex flex-wrap gap-2 justify-center border-b border-slate-200">
+          <div className="flex flex-wrap gap-1 sm:gap-2 justify-center border-b border-slate-200">
             {steps.map((step, index) => (
               <button
                 key={index}
                 onClick={() => setActiveStep(index)}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                className={`px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                   activeStep === index
                     ? 'text-indigo-600 border-b-2 border-indigo-600'
                     : 'text-slate-600 hover:text-slate-900'
@@ -111,10 +111,10 @@ export default function HowItWorks({ onSignUpClick }: HowItWorksProps) {
         {/* CTA */}
         <div className="text-center">
           <button
-            onClick={onSignUpClick}
+            onClick={onTryFreeClick}
             className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors font-medium"
           >
-            Sign up for launch
+            Get Started
           </button>
         </div>
       </div>

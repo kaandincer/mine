@@ -104,7 +104,7 @@ export function SignUpModal({ isOpen, onClose }: { isOpen: boolean; onClose: () 
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Sign up for launch">
+    <Modal isOpen={isOpen} onClose={onClose} title="Get started for free">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
@@ -214,7 +214,7 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Contact us">
+    <Modal isOpen={isOpen} onClose={onClose} title="Book a Demo">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="contact-name" className="block text-sm font-medium text-slate-700 mb-1">
