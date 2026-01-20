@@ -5,12 +5,12 @@ import { signOut } from '@/lib/actions/auth'
 import { Button } from '@/components/ui/button'
 
 interface LogoutButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
-  size?: 'sm' | 'md' | 'lg'
+  variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'link'
+  size?: 'sm' | 'default' | 'lg' | 'icon'
   className?: string
 }
 
-export default function LogoutButton({ variant = 'outline', size = 'md', className }: LogoutButtonProps) {
+export default function LogoutButton({ variant = 'outline', size = 'default', className }: LogoutButtonProps) {
   const router = useRouter()
 
   const handleSignOut = async () => {
