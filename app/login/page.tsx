@@ -103,7 +103,7 @@ function LoginContent() {
           </div>
         </div>
 
-        <Button type="submit" variant="primary" size="lg" className="w-full" disabled={loading}>
+        <Button type="submit" variant="default" size="lg" className="w-full" disabled={loading}>
           {loading ? 'Signing in...' : 'Sign in'}
         </Button>
       </form>

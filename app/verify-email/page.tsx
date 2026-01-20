@@ -63,7 +63,7 @@ function VerifyEmailContent() {
           Your email has been verified! You can now access your account.
         </Alert>
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           className="w-full"
           onClick={() => router.push('/app/projects')}
@@ -85,7 +85,7 @@ function VerifyEmailContent() {
       </Alert>
       <div className="space-y-2">
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           className="w-full"
           onClick={() => router.push('/login')}

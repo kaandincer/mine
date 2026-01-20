@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
           If an account exists with {email}, you will receive a password reset link shortly.
         </Alert>
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           className="w-full"
           onClick={() => router.push('/login')}
@@ -90,7 +90,7 @@ export default function ForgotPasswordPage() {
           autoComplete="email"
         />
 
-        <Button type="submit" variant="primary" size="lg" className="w-full" disabled={loading}>
+        <Button type="submit" variant="default" size="lg" className="w-full" disabled={loading}>
           {loading ? 'Sending...' : 'Send reset link'}
         </Button>
       </form>

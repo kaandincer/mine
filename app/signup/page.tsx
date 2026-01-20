@@ -115,7 +115,7 @@ export default function SignupPage() {
           Please check your email ({formData.email}) to confirm your account before signing in.
         </Alert>
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           className="w-full"
           onClick={() => router.push('/login')}
@@ -241,7 +241,7 @@ export default function SignupPage() {
           </div>
         </div>
 
-        <Button type="submit" variant="primary" size="lg" className="w-full" disabled={loading}>
+        <Button type="submit" variant="default" size="lg" className="w-full" disabled={loading}>
           {loading ? 'Creating account...' : 'Get started for free'}
         </Button>
 

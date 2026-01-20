@@ -81,7 +81,7 @@ export default function ResetPasswordPage() {
           This page requires a valid password reset link. Please check your email for the reset link.
         </Alert>
         <Button
-          variant="primary"
+          variant="default"
           size="lg"
           className="w-full"
           onClick={() => router.push('/forgot-password')}
@@ -133,7 +133,7 @@ export default function ResetPasswordPage() {
           autoComplete="new-password"
         />
 
-        <Button type="submit" variant="primary" size="lg" className="w-full" disabled={loading}>
+        <Button type="submit" variant="default" size="lg" className="w-full" disabled={loading}>
           {loading ? 'Updating password...' : 'Update Password'}
         </Button>
       </form>
