@@ -1,4 +1,3 @@
-import { Card, CardContent } from '@/components/ui/card'
 import { getProject } from '@/lib/mock/projects'
 
 export default async function ProjectDetailsPage({ params }: { params: Promise<{ projectId: string }> }) {
@@ -10,28 +9,25 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-gray-900">Project Details</h1>
-
-      <div className="flex justify-center">
-        <Card className="w-full max-w-2xl">
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              <div>
-                <div className="text-sm font-medium text-gray-500">Project Name</div>
-                <div className="mt-1 text-base text-gray-900">{project.name}</div>
-              </div>
-              <div>
-                <div className="text-sm font-medium text-gray-500">Source System</div>
-                <div className="mt-1 text-base text-gray-900">{project.sourceSystem}</div>
-              </div>
-              <div>
-                <div className="text-sm font-medium text-gray-500">Target System</div>
-                <div className="mt-1 text-base text-gray-900">{project.targetSystem}</div>
-              </div>
+    <div className="flex-1 bg-gray-50 p-8">
+      <div className="max-w-2xl">
+        <h1 className="text-2xl font-semibold text-gray-900 mb-4">Project Details</h1>
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="space-y-4">
+            <div>
+              <div className="text-xs text-gray-500 mb-1">Project Name</div>
+              <div className="text-sm text-gray-900">{project.name}</div>
             </div>
-          </CardContent>
-        </Card>
+            <div>
+              <div className="text-xs text-gray-500 mb-1">Source System</div>
+              <div className="text-sm text-gray-900">{project.sourceSystem}</div>
+            </div>
+            <div>
+              <div className="text-xs text-gray-500 mb-1">Target System</div>
+              <div className="text-sm text-gray-900">{project.targetSystem}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

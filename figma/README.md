@@ -1,11 +1,10 @@
+# Figma Make – Canonical UI Source
 
-  # MINE Project Setup UI
+All files in this directory are exported from Figma Make.
 
-  This is a code bundle for MINE Project Setup UI. The original project is available at https://www.figma.com/design/7aTE9L5Z9C8s9rX9mhQ9gD/MINE-Project-Setup-UI.
-
-  ## Running the code
-
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server.
-  
+Rules:
+- These files define the exact UI/UX.
+- No redesign, simplification, or visual interpretation is allowed.
+- App code must match these files exactly in layout, spacing, typography, colors, and states.
+- If app code conflicts with figma files, figma files win.
+- If something is unclear, ask before proceeding.
