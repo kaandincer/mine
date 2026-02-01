@@ -33,7 +33,7 @@ export default async function ProfilePage() {
                 <p className="mt-1 text-base text-gray-600">Manage your account settings</p>
               </div>
               <form action={signOut}>
-                <Button type="submit" variant="outline" size="lg">
+                <Button type="submit" size="lg" className="bg-indigo-600 text-white hover:bg-indigo-700">
                   Sign Out
                 </Button>
               </form>

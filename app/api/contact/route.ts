@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: NextRequest) {
   try {
     // Check if API key is set
@@ -13,6 +11,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       )
     }
+
+    // Initialize Resend inside the handler (not at module level)
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     const body = await request.json()
     const { name, email, company, message } = body

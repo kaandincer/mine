@@ -14,11 +14,11 @@ export function Navigation({ projectName, projectId }: NavigationProps) {
   const pathname = usePathname();
   
   const navItems = [
-    { id: 'project', label: 'Project', icon: FileText, href: projectId ? `/app/projects/${projectId}/project` : '#' },
-    { id: 'schemas', label: 'Schemas', icon: Database, href: projectId ? `/app/projects/${projectId}/schemas` : '#' },
+    { id: 'project', label: 'Control Plane', icon: FileText, href: projectId ? `/app/projects/${projectId}/project` : '#' },
+    { id: 'schemas', label: 'Data Overview', icon: Database, href: projectId ? `/app/projects/${projectId}/schemas` : '#' },
+    { id: 'data-quality', label: 'Data Quality', icon: CheckCircle, href: projectId ? `/app/projects/${projectId}/data-quality` : '#' },
     { id: 'mapping', label: 'Mapping', icon: GitBranch, href: projectId ? `/app/projects/${projectId}/mapping` : '#' },
     { id: 'transform', label: 'Transform', icon: Code, href: projectId ? `/app/projects/${projectId}/transform` : '#' },
-    { id: 'validate', label: 'Validate', icon: CheckCircle, href: projectId ? `/app/projects/${projectId}/validate` : '#' },
     { id: 'outputs', label: 'Outputs', icon: Download, href: projectId ? `/app/projects/${projectId}/outputs` : '#' },
   ];
 
@@ -26,9 +26,11 @@ export function Navigation({ projectName, projectId }: NavigationProps) {
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-8 h-8 bg-[#4F46E5] rounded flex items-center justify-center">
-            <span className="text-white font-semibold">M</span>
-          </div>
+          <img
+            src="/Mine Logo no background.png"
+            alt="MINE - AI-Native Data Migration Automation"
+            className="h-8 w-auto"
+          />
           <span className="text-xl font-semibold text-gray-900">MINE</span>
         </div>
         <Link

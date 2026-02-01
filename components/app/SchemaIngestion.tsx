@@ -306,12 +306,7 @@ export function SchemaIngestion({ projectId }: SchemaIngestionProps) {
 
   return (
     <div className="flex-1 bg-gray-50 flex flex-col">
-      <div className="border-b border-gray-200 bg-white p-6">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">Schema Ingestion</h1>
-        <p className="text-sm text-gray-600">Select tables to include in the migration</p>
-      </div>
-
-      <div className="flex-1 p-6 flex gap-6 overflow-hidden">
+      <div className="flex-1 flex gap-6 overflow-hidden">
         <SchemaPanel
           title="Source Schema"
           schema={sourceSchema}
